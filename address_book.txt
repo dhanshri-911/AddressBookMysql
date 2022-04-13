@@ -1,0 +1,45 @@
+create database address_book_servicedb;
+show databases;
+use address_book_servicedb;
+
+create table address_book ( firstName VARCHAR(20) NOT NULL, 
+    lastName VARCHAR(20) NOT NULL,                           
+     address VARCHAR(150) NOT NULL,
+     city VARCHAR(20) NOT NULL,
+     state VARCHAR(20)NOT NULL,
+     zip INT NOT NULL,
+     phoneNumber INT NOT NULL,
+      email VARCHAR(100) NOT NULL);
+desc  address_book ;
+
+insert into address_book (firstName,lastName,address,city,state,zip,phoneNumber,email) values  
+      ('rajshri','lad','aurngabad','aurngabad','HR',421301,1234577890,'rajshri@gmail.com'),
+	 ('sneha','tibile','vardhman','kalyan','MH',421203,1234567890,'@snehagmail.com'),
+      ('harsh','patil','vardhman','dombivli','MH',421223,1234567990,'harsh@gmail.com'),
+      ('sai','bisure','satara','kalyan','MH',421201,1234567890,'sai@gmail.com');
+
+select * from address_book;
+
+
+update address_book set zip = 45678 where firstName='harsh';  
+ select * from address_book;   
+
+ delete from address_book where firstName='sushant'; 
+
+select * from address_book where city='kalyan' or state='MH'; 
+
+select count(city) from address_book; 
+select count(state) from address_book;  
+select * from address_book where city='kalyan' order by firstName;
+
+alter table address_book add type Varchar(20) NOT NULL;    
+select * from address_book;                                             
+update address_book set type = 'Friend' where firstname = 'harsh';         
+update address_book set type = 'Family' where firstname = 'sai';     
+select * from address_book; 
+
+select count(type) from address_book where type = 'friend'; 
+
+insert into address_book (firstName,lastName,address,city,state,zip,phoneNumber,email,type) values  
+	('sweta','nalawade','angan','murbad','MH',421401,1274577890,'ponam@gmail.com','friend'),
+	('rani','suryawamshi','sudharshan','newyork','US',400003,8834567890,'deepika@gmail.com','profession');
